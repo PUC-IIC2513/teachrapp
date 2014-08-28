@@ -11,7 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821163338) do
+ActiveRecord::Schema.define(version: 20140826163813) do
+
+  create_table "announcements", force: true do |t|
+    t.string   "title",                     null: false
+    t.text     "content"
+    t.integer  "level",      default: 1,    null: false
+    t.boolean  "notify",     default: true
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "announcements", ["user_id"], name: "index_announcements_on_user_id"
+
+  create_table "resources", force: true do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "file"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "resources", ["name"], name: "index_resources_on_name"
+  add_index "resources", ["user_id"], name: "index_resources_on_user_id"
+
+  create_table "resources_tags", id: false, force: true do |t|
+    t.integer "resource_id"
+    t.integer "tag_id"
+  end
+
+  add_index "resources_tags", ["resource_id", "tag_id"], name: "index_resources_tags_on_resource_id_and_tag_id", unique: true
+
+  create_table "tags", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["user_id"], name: "index_tags_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "first_name",                null: false
