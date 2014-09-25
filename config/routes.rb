@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :tags
 
+  root 'home#index'
+
   resources :resources
 
   resources :announcements
