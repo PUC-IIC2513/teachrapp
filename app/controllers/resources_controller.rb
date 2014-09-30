@@ -7,6 +7,15 @@ class ResourcesController < ApplicationController
     @resources = Resource.all
   end
 
+  def with_tag
+    tag = Tag.find(params[:tag_id])
+    @resources = tag.resources
+    # Si no nos interesa el tag y queremos menos consultas...
+    # @resources = Resource.joins(:tags).where(tags: { id: params[:tag_id] })
+    @resources_title = "Recursos con tag \"#{tag.name}\""
+    render 'index'
+  end
+
   # GET /resources/1
   # GET /resources/1.json
   def show

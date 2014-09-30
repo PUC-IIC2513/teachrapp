@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :tags
 
   root 'home#index'
+
+  resources :tags, only: [:index, :show] do
+    get 'resources', controller: 'resources', action: 'with_tag'
+  end
 
   resources :resources
 
