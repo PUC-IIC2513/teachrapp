@@ -1,33 +1,22 @@
-<h1>Listing resources</h1>
+<h1><%= @resources_title || 'Todos los recursos' %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>File</th>
-      <th>Url</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @resources.each do |resource| %>
-      <tr>
-        <td><%= resource.name %></td>
-        <td><%= resource.description %></td>
-        <td><%= resource.file %></td>
-        <td><%= resource.url %></td>
-        <td><%= resource.user.complete_name %></td>
-        <td><%= link_to 'Show', resource %></td>
-        <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
-        <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @resources.each do |resource| %>
+  <div class="resource">
+    <%= image_tag 'file.png' %>
+    <span>
+      <%= resource.name %>
+    </span>
+    <span>
+      <%= resource.user.first_name %>
+    </span>
+    <% resource.tags.each do |tag| %>
+      <span><%= link_to tag.name, tag_resources_path(tag) %></span>
     <% end %>
-  </tbody>
-</table>
+    <div class="actions">
+      <%= link_to "Editar", edit_resource_path(resource) %>
+      <%= link_to "Eliminar", resource_path(resource), method: :delete %>
+    </div>
+  </div>
+<% end %>
 
-<br>
-
-<%= link_to 'New Resource', new_resource_path %>
+<%= link_to 'Crear Recurso', new_resource_path %>
