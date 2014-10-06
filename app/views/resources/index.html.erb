@@ -1,22 +1,21 @@
 <h1><%= @resources_title || 'Todos los recursos' %></h1>
 <div class="resources">
-<% @resources.each do |resource| %>
-  <div class="resource">
-    <%= image_tag 'file.png' %>
-    <span>
-      <%= resource.name %>
-    </span>
-    <span>
-      <%= resource.user.first_name %>
-    </span>
-    <%= render 'tags', tags: resource.tags %>
-    <div class="actions">
-      <%= link_to "Editar", edit_resource_path(resource) %>
-      <%= link_to "Eliminar", resource_path(resource), method: :delete %>
+  <% @resources.each do |resource| %>
+    <div class="resource">
+      <%= image_tag 'file.png' %>
+      <span>
+        <%= resource.name %>
+      </span>
+      <span>
+        <%= resource.user.first_name %>
+      </span>
+      <%= render 'tags', tags: resource.tags %>
+      <div class="actions">
+        <%= link_to "Editar", edit_resource_path(resource) %>
+        <%= link_to "Eliminar", resource_path(resource), method: :delete %>
+      </div>
     </div>
-  </div>
-<% end %>
-
+  <% end %>
 </div>
 
 <%= link_to 'Crear Recurso', new_resource_path %>

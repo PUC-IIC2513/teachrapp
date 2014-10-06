@@ -4,9 +4,39 @@
   margin-right: 10px;
   margin-bottom: 10px;
   border: 1px solid #aaa;
-  padding: 5px;
+  padding: 10px;
+  text-align: center;
+  transition: all 0.3s;
+  top: 0;
+}
+
+.resource:hover {
+  position: relative;
+  top: -5px;
+  box-shadow: 5px 5px 5px #aaa;
+}
+
+.resource span {
+  display: block;
+}
+
+.resource ul {
+  padding: 0;
+  height: 40px;
+  overflow: scroll;
+}
+
+.resource li {
+  /* list-style-type: none; */
+  display: inline;
 }
 
 .resource img {
   width: 64px;
+}
+
+.resources::after {
+  clear: both;
+  display: block;
+  content: " ";
 }
