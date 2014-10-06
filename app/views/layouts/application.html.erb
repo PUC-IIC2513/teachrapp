@@ -7,7 +7,25 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    
+    <div id="login-bar">
+      <% if current_user? %>
+        Bienvenido(a), <%= current_user.first_name %>
+        <%= link_to "Logout", session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Login", session_path %>
+      <% end %>
+    </div>
+
+    <% if flash.notice %>
+      <div class="notice">
+        <%= flash.notice %>
+      </div>
+    <% end %>
+    <% if flash.alert %>
+      <div class="alert">
+        <%= flash.alert %>
+      </div>
+    <% end %>
     <%= yield %>
 
     <footer>
