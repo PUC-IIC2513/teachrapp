@@ -3,7 +3,9 @@
   <%= form_for(:session, url: session_path) do |f| %>
     <div class="field">
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%# seteamos el valor inicial a el valor enviado,
+          por si el formulario se está mostrando de nuevo desde :create %>
+      <%= f.text_field :email, value: params[:session].try(:[], :email) %>
     </div>
     <div class="field">
       <%= f.label :password %>
