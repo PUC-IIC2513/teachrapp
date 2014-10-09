@@ -1,5 +1,5 @@
 .resource {
-  width: 120px;
+  width: 160px;
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -7,11 +7,11 @@
   padding: 10px;
   text-align: center;
   transition: all 0.3s;
-  top: 0;
+  position: relative;
+  top: 0px;
 }
 
 .resource:hover {
-  position: relative;
   top: -5px;
   box-shadow: 5px 5px 5px #aaa;
 }
@@ -20,10 +20,30 @@
   display: block;
 }
 
-.resource ul {
+.resource .tags {
+  position: relative;
+  height: 20px;
+}
+.resource ul.tag-list {
+  position: absolute;
   padding: 0;
-  height: 40px;
-  overflow: scroll;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  &:hover {
+    height: auto;
+    overflow: visible;
+    background: #ddd;
+    white-space: normal;
+    padding: 2%;
+    width: 98%;
+  }
+  li {
+    white-space: nowrap;
+    font-size: 12px;
+  }
 }
 
 .resource li {
@@ -33,6 +53,10 @@
 
 .resource img {
   width: 64px;
+}
+
+.resources {
+  position: relative;
 }
 
 .resources::after {

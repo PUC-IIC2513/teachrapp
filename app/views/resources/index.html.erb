@@ -2,14 +2,16 @@
 <div class="resources">
   <% @resources.each do |resource| %>
     <div class="resource">
-      <%= image_tag 'file.png' %>
+      <%= link_to image_tag('file.png'), resource %>
       <span>
-        <%= resource.name %>
+        <%= link_to resource.name, resource %>
       </span>
       <span>
         <%= resource.user.first_name %>
       </span>
-      <%= render 'tags', tags: resource.tags %>
+      <div class="tags">
+        <%= render 'tags', tags: resource.tags %>
+      </div>
       <div class="actions">
         <%= link_to "Editar", edit_resource_path(resource) %>
         <%= link_to "Eliminar", resource_path(resource), method: :delete %>
