@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_user?
 
   def current_user
-    session.key?(:user_id) ? User.find(session[:user_id]) : nil
+    return @current_user if defined?(@current_user)
+    @current_user = session.key?(:user_id) ? User.find(session[:user_id]) : nil
   end
 
   def current_user?
