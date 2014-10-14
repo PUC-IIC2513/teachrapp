@@ -12,7 +12,7 @@
 
 <p>
   <strong>File:</strong>
-  <%= @resource.file %>
+  <%= link_to "Descargar", @resource.file.try(:url) %>
 </p>
 
 <p>

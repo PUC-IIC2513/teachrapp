@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007151400) do
+ActiveRecord::Schema.define(version: 20141009153323) do
 
   create_table "announcements", force: true do |t|
     t.string   "title",                     null: false
@@ -26,13 +26,17 @@ ActiveRecord::Schema.define(version: 20141007151400) do
   add_index "announcements", ["user_id"], name: "index_announcements_on_user_id"
 
   create_table "resources", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "name",              null: false
     t.text     "description"
     t.string   "file"
     t.string   "url"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "resources", ["name"], name: "index_resources_on_name"
