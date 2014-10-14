@@ -26,6 +26,8 @@ gem 'spring',        group: :development
 
 gem 'bcrypt'
 
+gem "paperclip", "~> 4.2"
+
 group :development do
   gem 'byebug'
   gem 'quiet_assets'
