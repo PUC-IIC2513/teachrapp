@@ -28,6 +28,11 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
+        # TODO: lo más recomendable sería enviar el correo indirectamente
+        # desde este punto, dándole a una clase la responsabilidad de crear
+        # el anuncio y de realizar su envío por e-mail. Así, mantenemos
+        # el controller simple y tampoco le entregamos al modelo AR responsabilidades
+        # más allá de lo que realmente necesitamos de él.
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
         format.json { render :show, status: :created, location: @announcement }
       else
