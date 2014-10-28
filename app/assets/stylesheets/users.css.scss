@@ -1,0 +1,55 @@
+
+#new-account-container {
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #aaa;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+div.input {
+  margin: 10px 0;
+}
+
+div.input::after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both;
+}
+
+div.input label, div.input input {
+  float: left;
+  font-size: 18px;
+}
+
+div.input label {
+  width: 35%;
+  line-height: 31px;
+  text-align: right;
+}
+
+div.input input {
+  width: 55%;
+  margin-left: 5%;
+  height: 25px;
+  padding: 3px;
+}
+
+div.input span.error {
+  float: left;
+  margin-left: 40%;
+  font-size: smaller;
+}
+
+div.field_with_errors {
+  input, label, span.error {
+    color: #c00;
+  }
+  input {
+    border: 1px solid #c00;
+    color: #c00;
+  }
+}
