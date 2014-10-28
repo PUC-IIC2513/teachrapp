@@ -28,6 +28,8 @@ gem 'bcrypt'
 
 gem "paperclip", "~> 4.2"
 
+gem 'simple_form'
+
 group :development do
   gem 'byebug'
   gem 'quiet_assets'
