@@ -1,23 +1,12 @@
 <h1><%= @resources_title || 'Todos los recursos' %></h1>
+<p class="order-links">
+  Ordenar por:
+  <%= link_to 'nombre', resources_path(order: :name), remote: true, data: { type: 'html' } %>
+  |
+  <%= link_to 'creación', resources_path(order: :created_at), remote: true, data: { type: 'html' } %>
+</p>
 <div class="resources">
-  <% @resources.each do |resource| %>
-    <div class="resource">
-      <%= link_to image_tag('file.png'), resource %>
-      <span>
-        <%= link_to resource.name, resource %>
-      </span>
-      <span>
-        <%= resource.user.first_name %>
-      </span>
-      <div class="tags">
-        <%= render 'tags', tags: resource.tags %>
-      </div>
-      <div class="actions">
-        <%= link_to "Editar", edit_resource_path(resource) %>
-        <%= link_to "Eliminar", resource_path(resource), method: :delete %>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'resources_list' %>
 </div>
 
 <%= link_to 'Crear Recurso', new_resource_path %>

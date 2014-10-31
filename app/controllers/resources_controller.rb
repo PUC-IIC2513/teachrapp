@@ -5,6 +5,18 @@ class ResourcesController < ApplicationController
   # GET /resources.json
   def index
     @resources = Resource.all
+    if params[:order]
+      @resources = @resources.order(params[:order])
+    end
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render partial: 'resources_list' and return
+        end
+      end
+      format.js { render text: "alert('funciona');"}
+    end
+
   end
 
   def with_tag

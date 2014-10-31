@@ -1,0 +1,18 @@
+<% @resources.each do |resource| %>
+  <div class="resource">
+    <%= link_to image_tag('file.png'), resource %>
+    <span>
+      <%= link_to resource.name, resource %>
+    </span>
+    <span>
+      <%= resource.user.first_name %>
+    </span>
+    <div class="tags">
+      <%= render 'tags', tags: resource.tags %>
+    </div>
+    <div class="actions">
+      <%= link_to "Editar", edit_resource_path(resource) %>
+      <%= link_to "Eliminar", resource_path(resource), method: :delete %>
+    </div>
+  </div>
+<% end %>
