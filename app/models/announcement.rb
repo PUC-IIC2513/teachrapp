@@ -4,7 +4,7 @@ class Announcement < ActiveRecord::Base
   validates :title, presence: true, length: { minimum: 5 }
   validates :level, numericality: { only_integer: true, greater_than: 0, less_than: 3 }
 
-  after_create :send_by_email
+  # after_create :send_by_email
 
   def send_by_email
     # Por el momento, simplemente iteraremos en todos
