@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-
+  belongs_to :group
+  
   has_secure_password
 
   validates :first_name, presence: true, length: { in: 2..50 }

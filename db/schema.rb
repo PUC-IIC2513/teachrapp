@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009153323) do
+ActiveRecord::Schema.define(version: 20141106020713) do
 
   create_table "announcements", force: true do |t|
     t.string   "title",                     null: false
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 20141009153323) do
   end
 
   add_index "announcements", ["user_id"], name: "index_announcements_on_user_id"
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.string   "git_repo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["project_id"], name: "index_groups_on_project_id"
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "resources", force: true do |t|
     t.string   "name",              null: false
@@ -69,8 +86,10 @@ ActiveRecord::Schema.define(version: 20141009153323) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "birthdate"
+    t.integer  "group_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["group_id"], name: "index_users_on_group_id"
 
 end
