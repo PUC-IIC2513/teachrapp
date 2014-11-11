@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'proxy/get_commits/:group_id', controller: 'proxy', action: 'get_commits'
+
   root 'home#index'
 
   resources :tags, only: [:index, :show] do
@@ -15,8 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:new, :create]
-  
+
   resource :session, only: [:new, :create, :destroy]
+
+  resources :groups, only: [:index, :show]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,66 @@
+article.project {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 70%;
+
+  button {
+    padding: 10px 20px;
+    float: right;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  .team-info, .project-info {
+    float: left;
+    width: 40%;
+  }
+  .team-info {
+    margin-right: 10%;
+  }
+  &::after {
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  dt, dd {
+    float: left;
+  }
+
+  dt {
+    margin-right: 10px;
+    clear: left;
+    &::after {
+      content: ":";
+    }
+  }
+
+  dd {
+    position: relative;
+  }
+
+}
+
+.git-tooltip {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 20px;
+  background: #fff;
+  display: none;
+}

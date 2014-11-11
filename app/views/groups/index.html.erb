@@ -1,0 +1,31 @@
+<h1>Listado de grupos</h1>
+<% @groups.each do |group| %>
+  <article class="project">
+    <button class="show-stats" data-repo="<%= group.git_repo %>">Mostrar estadísticas Github</button>
+    <h2>Grupo "<%= group.name %>"</h2>
+    <div class="team-info">
+      <h3>Equipo</h3>
+      <ul>
+        <% group.members.each do |u| %>
+          <li><%= link_to u.complete_name, admin_user_path(u) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="project-info">
+      <% group.project.tap do |project| %>
+        <h3>Project</h3>
+        <dl>
+          <dt>Nombre</dt>
+          <dd><%= project.name %></dd>
+          <dt>Github Repo</dt>
+          <dd>
+            <div class="git-tooltip">
+              <span>Loading...</span>
+            </div>
+            <%= link_to group.git_repo, "https://github.com/#{group.git_repo}", class: 'github-link', data: { 'group-id' => group.id } %>
+          </dd>
+        </dl>
+      <% end %>
+    </div>
+  </article>
+<% end %>
